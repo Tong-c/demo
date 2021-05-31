@@ -1,19 +1,19 @@
-package com.tc;
+package com.tc.chapter1;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car {
 
-    @NotNull
+    @NotNull/*(message = "{custom.NotNull.message}")*/
     private String manufacturer;
 
-    @NotNull
-    @Size(min = 2, max = 14)
     private String licensePlate;
 
-    @Min(2)
     private int seatCount;
 
     public Car(String manufacturer, String licensePlate, int seatCount) {
@@ -44,5 +44,9 @@ public class Car {
 
     public void setSeatCount(int seatCount) {
         this.seatCount = seatCount;
+    }
+
+    public static void main(String[] args) {
+        List<@NotNull Car> carList = new ArrayList<Car>();
     }
 }

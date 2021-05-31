@@ -1,5 +1,6 @@
-package com.tc;
+package com.tc.chapter1;
 
+import com.tc.chapter1.Car;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -34,4 +35,5 @@ public class CarTest {
         assertEquals(1, constraintViolations.size());
         assertEquals("size must be between 2 and 14", constraintViolations.iterator().next().getMessage());
     }
+
 }
