@@ -10,7 +10,7 @@ public class User {
     @NotNull(groups = Update.class)
     private Integer id;
 
-    @NotNull(groups = Insert.class)
+    @NotNull(groups = Insert.class, message = "{name.NotNull.message}")
     private String name;
 
     public User() {

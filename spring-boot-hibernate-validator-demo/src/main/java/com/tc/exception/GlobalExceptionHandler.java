@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public R handleMethodArgumentException(MethodArgumentNotValidException exception) {
         BindingResult bindingResult = exception.getBindingResult();
-        StringBuilder sb = new StringBuilder("校验失败:");
+        StringBuilder sb = new StringBuilder("");
         for (FieldError fieldError : bindingResult.getFieldErrors()) {
             sb.append(fieldError.getField()).append("：").append(fieldError.getDefaultMessage()).append(", ");
         }
