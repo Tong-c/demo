@@ -43,4 +43,5 @@ public class R<T> {
     public void setData(T data) {
         this.data = data;
     }
+
 }

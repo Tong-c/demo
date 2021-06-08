@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -20,14 +22,22 @@ public class GlobalExceptionHandler {
         for (FieldError fieldError : bindingResult.getFieldErrors()) {
             sb.append(fieldError.getField()).append("：").append(fieldError.getDefaultMessage()).append(", ");
         }
-        String msg = sb.toString();
+        String msg = removeEnChar(sb);
         return new R(4000, msg);
     }
 
+    private String removeEnChar(StringBuilder sb) {
+        if (sb.toString().contains("：")) {
+            return sb.toString().split("：")[1];
+        }
+        return sb.toString();
+    }
+
     @ResponseBody
-    @ExceptionHandler(Exception.class)
-    public R handleException(Exception exception) {
-        return new R(4000, exception.getMessage());
+    @ExceptionHandler(ConstraintViolationException.class)
+    public R handleException(ConstraintViolationException exception) {
+        String msg = removeEnChar(new StringBuilder(exception.getMessage()));
+        return new R(4000, msg);
     }
 
 }
