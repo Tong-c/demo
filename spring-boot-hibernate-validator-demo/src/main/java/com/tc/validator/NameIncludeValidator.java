@@ -22,10 +22,6 @@ public class NameIncludeValidator implements ConstraintValidator<NameInclude, St
         if (!StringUtils.hasLength(value)) {
             return true;
         }
-        if (StringUtils.hasLength(val) && val.equals(value)) {
-            return false;
-        } else {
-            return true;
-        }
+        return !StringUtils.hasLength(val) || !val.equals(value);
     }
 }

@@ -1,6 +1,7 @@
-package com.zhuizhi.base.exception;
+package com.tc.exception;
 
-import com.zhuizhi.base.constants.utils.HttpStatus;
+
+import org.springframework.http.HttpStatus;
 
 public abstract class BaseException extends RuntimeException {
 

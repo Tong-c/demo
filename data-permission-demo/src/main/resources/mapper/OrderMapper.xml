@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tc.dao.OrderDao">
+
+    <select id="getOrderList" resultType="com.tc.domain.Order">
+        select orderNo, shop_id shopId, order_amount orderAmount
+        from t_order o left join t_department d on o.shop_id = d.id
+        order by o.id
+        limit #{page}, #{size}
+    </select>
+
+
+</mapper>

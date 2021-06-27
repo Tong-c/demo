@@ -1,9 +1,13 @@
 package com.tc.common;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class R<T> {
 
     private Integer code;
     private String msg;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
 
     public R() {
@@ -18,6 +22,15 @@ public class R<T> {
         this.code = code;
         this.msg = msg;
         this.data = data;
+    }
+
+
+    public static <T> R<T> ok() {
+        return new R<>(0, "请求成功");
+    }
+
+    public static <T> R<T> error() {
+        return new R<>();
     }
 
     public Integer getCode() {

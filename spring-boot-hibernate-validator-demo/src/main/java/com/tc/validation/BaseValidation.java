@@ -1,12 +1,11 @@
-package com.zhuizhi.base.exception.utils;
+package com.tc.validation;
 
-import com.zhuizhi.base.constants.ErrorConstant;
-import com.zhuizhi.base.exception.BaseKnownException;
-import com.zhuizhi.base.exception.BaseUnknownException;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.MapUtils;
+
+import com.tc.common.ErrorConstant;
+import com.tc.exception.BaseKnownException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.CollectionUtils;
 
 import java.text.MessageFormat;
 import java.util.Collection;
@@ -66,12 +65,12 @@ public class BaseValidation {
 
     public static void throwBaseUnKnownException(Integer errorCode, String errorMessage) {
         log.warn(errorMessage);
-        throw new BaseUnknownException(errorCode, errorMessage);
+        throw new BaseKnownException(errorCode, errorMessage);
     }
 
     public static boolean isEmpty(Object obj) {
-        if ((obj instanceof Collection && CollectionUtils.isEmpty((Collection<?>) obj)) || ZZStringUtils.isEmpty(obj)
-                || obj instanceof Map && MapUtils.isEmpty((Map<?, ?>) obj)) {
+        if ((obj instanceof Collection && CollectionUtils.isEmpty((Collection<?>) obj)) /*|| ZZStringUtils.isEmpty(obj)*/
+                || obj instanceof Map/* && MapUtils.isEmpty((Map<?, ?>) obj)*/) {
             return true;
         }
         return false;

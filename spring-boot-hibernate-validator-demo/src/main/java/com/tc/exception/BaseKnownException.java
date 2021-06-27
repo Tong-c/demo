@@ -1,6 +1,7 @@
-package com.zhuizhi.base.exception;
+package com.tc.exception;
 
-import com.zhuizhi.base.constants.ErrorConstant;
+
+import com.tc.common.ErrorConstant;
 
 import java.text.MessageFormat;
 
